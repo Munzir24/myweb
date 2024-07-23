@@ -8,7 +8,7 @@ pipeline {
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "172.31.87.160"
         NEXUS_REPO = "pipelineapp1"
-        NEXUS_CREDENTIALS = credentials('nexus-token')
+        NEXUS_CREDENTIALS = "nexus-token"
         JAVA_HOME = "/usr/lib/jvm/java-11-openjdk-11.0.23.0.9-2.amzn2.0.1.x86_64/"
         PATH = "${JAVA_HOME}/bin:${env.PATH}"
     }
@@ -36,7 +36,7 @@ pipeline {
                     artifactPath = filesByGlob[0].path;
                     artifactExists = fileExists artifactPath;
                     if(artifactExists) {
-                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, version: ${pom.version}, packaging: {pom.packaging}";
+                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, version: ${pom.version}, packaging: ${pom.packaging}";
                         nexusArtifactUploader(
                             nexusVersion: "${env.NEXUS_VERSION}",
                             protocol: "${env.NEXUS_PROTOCOL}",
@@ -50,7 +50,7 @@ pipeline {
                                 classifier: '',
                                 file: artifactPath,
                                 type: pom.packaging],
-                                [artifactID: pom.artifactId,
+                                [artifactId: pom.artifactId,
                                 classifier: '',
                                 file: "pom.xml",
                                 type: "pom"]
