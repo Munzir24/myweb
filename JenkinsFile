@@ -4,10 +4,10 @@ pipeline {
     }
     environment {
         MVN_HOME = tool name: 'maven', type: 'maven'
-        NEXUS_VERSION = 'nexus3'
-        NEXUS_PROTOCOL = 'http'
+        NEXUS_VERSION = "nexus3"
+        NEXUS_PROTOCOL = "http"
         NEXUS_URL = "172.31.87.160"
-        NEXUS_REPO = 'pipelineapp1'
+        NEXUS_REPO = "pipelineapp1"
         NEXUS_CREDENTIALS = credentials('nexus-token')
         JAVA_HOME = "/usr/lib/jvm/java-11-openjdk-11.0.23.0.9-2.amzn2.0.1.x86_64/"
         PATH = "${JAVA_HOME}/bin:${env.PATH}"
