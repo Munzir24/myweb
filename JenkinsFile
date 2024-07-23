@@ -46,7 +46,7 @@ pipeline {
                             repository: "${env.NEXUS_REPO}",
                             credentialsId: "${env.NEXUS_CREDENTIALS}",
                             artifacts: [
-                                [artifactId: pom.artifactID,
+                                [artifactId: pom.artifactId,
                                 classifier: '',
                                 file: artifactPath,
                                 type: pom.packaging],
